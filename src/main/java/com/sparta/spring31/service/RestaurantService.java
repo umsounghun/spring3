@@ -1,7 +1,7 @@
 package com.sparta.spring31.service;
 
 import com.sparta.spring31.dto.RestaurantRequestDto;
-import com.sparta.spring31.models.Restaurant;
+import com.sparta.spring31.model.Restaurant;
 import com.sparta.spring31.repository.RestaurantRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,6 +16,7 @@ public class RestaurantService {
 
     private final RestaurantRepository RestaurantRepository;
 
+    //어노테이션 ;
     @Transactional
     public Long update(@PathVariable Long id, @RequestBody RestaurantRequestDto requestDto) {
         Restaurant Restaurant = RestaurantRepository.findById(id).orElseThrow(
@@ -24,4 +25,4 @@ public class RestaurantService {
 
         return Restaurant.getId();
     }
-    }
+}

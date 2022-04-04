@@ -2,8 +2,9 @@ package com.sparta.spring31;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import jdk.nashorn.internal.objects.annotations.Getter;
-import jdk.nashorn.internal.objects.annotations.Setter;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -96,6 +97,7 @@ class FoodIntegrationTest {
     @Nested
     @DisplayName("음식점에 음식 3개 등록 및 메뉴판 조회")
     class RegisterRestaurants {
+
         @Test
         @Order(1)
         @DisplayName("음식 1개 등록")

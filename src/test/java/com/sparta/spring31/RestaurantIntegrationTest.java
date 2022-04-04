@@ -2,8 +2,9 @@ package com.sparta.spring31;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import jdk.nashorn.internal.objects.annotations.Getter;
-import jdk.nashorn.internal.objects.annotations.Setter;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,7 +24,7 @@ class RestaurantIntegrationTest {
     private TestRestTemplate restTemplate;
 
     private HttpHeaders headers;
-    private ObjectMapper mapper = new ObjectMapper();
+    private final ObjectMapper mapper = new ObjectMapper();
 
     private final List<RestaurantDto> registeredRestaurants = new ArrayList<>();
 

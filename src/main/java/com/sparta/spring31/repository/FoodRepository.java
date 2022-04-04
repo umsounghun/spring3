@@ -1,13 +1,11 @@
 package com.sparta.spring31.repository;
 
 import com.sparta.spring31.model.Food;
-import com.sparta.spring31.model.Restaurant;
-import com.sparta.spring31.model.Food;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface FoodRepository extends JpaRepository<Food, Long> {
-//    List<Reply> findAllByPostid(Long postId);
-    List<Food> findAllByrestaurantIdOrderByCreatedAtDesc(Long restaurantId);
 }

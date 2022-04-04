@@ -1,7 +1,9 @@
 package com.sparta.spring31.service;
 
-import com.sparta.spring31.dto.FoodRequestDto;
+import com.sparta.spring31.dto.FoodDto;
+import com.sparta.spring31.dto.RestaurantDto;
 import com.sparta.spring31.model.Food;
+import com.sparta.spring31.model.Restaurant;
 import com.sparta.spring31.repository.FoodRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -11,28 +13,29 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Service
+
 public class FoodService {
 
-    private final FoodRepository FoodRepository;
+    private final FoodRepository foodRepository;
 
-    // 댓글 조회
-    public List<Food> getFood(Long postId) {
-        return FoodRepository.findAllByPostidOrderByCreatedAtDesc(postId);
-    }
-
-    // 댓글 작성
     @Transactional
-    public Food createFood(FoodRequestDto requestDto, Long userId) {
-        String replyCheck = requestDto.getFood();
-        if (replyCheck.contains("script")|| replyCheck.contains("<")||replyCheck.contains(">")){
-            Food food = new Food(requestDto, userId,"xss 안돼요,, 하지마세요ㅠㅠ");
-            FoodRepository.save(food);
-            return food;
+    public Food registerFood(FoodDto requestDto) {
+
+        Long restauratId = requestDto.getRetaurantId();
+        String name = requestDto.getName();
+        Long price = requestDto.getPrice();
+
+        // 조건에 해당하지 않으면 에러가 나옴
+        if (price < 100 || price > 1000000) {
+            throw new IllegalArgumentException("주문 가격은 100원 ~ 1,000,000원 입니다.");
+        } else if (price % 100 != 0) {
+            throw new IllegalArgumentException("주문가격은 100원 단위로만 가능합니다");
         }
-        // 요청받은 DTO 로 DB에 저장할 객체 만들기
-        Food food = new Food(requestDto, userId);
-        FoodRepository.save(food);
-        return food;
-    }
+
+            Food food = new Food(restauratId, name, price);
+            foodRepository.save(food);
+            return food;
+
+        }
 
 }

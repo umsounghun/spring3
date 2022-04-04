@@ -18,11 +18,13 @@ public class FoodService {
 
     private final FoodRepository foodRepository;
     
-    public Food registerFood(FoodDto requestDto) {
+    public void registerFood(List<FoodDto> requestDtos, Long retaurantId) {
 
-        Long restauratId = requestDto.getRetaurantId();
-        String name = requestDto.getName();
-        Long price = requestDto.getPrice();
+        for(int i = 0; i < requestDtos.size(); i++) {
+            FoodDto requestDto = requestDtos.get(i);
+            String name = requestDto.getName();
+            Long price = requestDto.getPrice();
+
 
         // 조건에 해당하지 않으면 에러가 나옴
         if (price < 100 || price > 1000000) {
@@ -31,10 +33,9 @@ public class FoodService {
             throw new IllegalArgumentException("주문가격은 100원 단위로만 가능합니다");
         }
 
-            Food food = new Food(restauratId, name, price);
+            Food food = new Food(retaurantId, name, price);
             foodRepository.save(food);
-            return food;
-
         }
+    }
 
 }

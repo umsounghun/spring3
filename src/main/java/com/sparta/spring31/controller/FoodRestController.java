@@ -25,8 +25,10 @@ public class FoodRestController {
 
     // 음식점 등록
     @PostMapping("/restaurant/{restaurantId}/food/register")
-    public void registerFood(@RequestBody FoodDto requestDto) {
-        foodService.registerFood(requestDto);
+    // @PathVariable url을 통해서 값을 받는다
+    // 하나가 Fooddto이고, 이것을 여러개 받기 위해서는 List형식으로 받아야 함
+    public void registerFood(@RequestBody List<FoodDto> requestDto, @PathVariable Long restaurantId) {
+        foodService.registerFood(requestDto, restaurantId);
     }
 
 }

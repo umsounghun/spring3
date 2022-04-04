@@ -27,11 +27,6 @@ public class Food {
     @Column(nullable = false)
     private Long restaurantId;
 
-    public Food(FoodDto requestDto) {
-        this.restaurantId = requestDto.getRetaurantId();
-        this.name = requestDto.getName();
-        this.price = requestDto.getPrice();
-    }
 
 
     public Food(Long restaurantId, String name, Long price) {

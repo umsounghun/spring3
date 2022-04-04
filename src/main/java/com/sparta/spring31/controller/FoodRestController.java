@@ -24,9 +24,9 @@ public class FoodRestController {
     }
 
     // 음식점 등록
-    @PostMapping("/restaurants/{restaurantId}/food/register")
-    public Food registerFood(@RequestBody FoodDto requestDto) {
-        return foodService.registerFood(requestDto);
+    @PostMapping("/restaurant/{restaurantId}/food/register")
+    public void registerFood(@RequestBody FoodDto requestDto) {
+        foodService.registerFood(requestDto);
     }
 
 }

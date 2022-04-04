@@ -17,8 +17,7 @@ import java.util.List;
 public class FoodService {
 
     private final FoodRepository foodRepository;
-
-    @Transactional
+    
     public Food registerFood(FoodDto requestDto) {
 
         Long restauratId = requestDto.getRetaurantId();

@@ -8,4 +8,6 @@ import java.util.List;
 
 @Repository
 public interface FoodRepository extends JpaRepository<Food, Long> {
+    List<Food> findByRestaurantIdAndName(Long restaurantId, String name);
+    List<Food> findAllByRestaurantId(Long restaurantId);
 }

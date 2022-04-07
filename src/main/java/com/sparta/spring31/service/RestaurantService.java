@@ -16,8 +16,8 @@ public class RestaurantService {
 
         //Getter로 받는 input 요소들
         String name = requestDto.getName();
-        Long minOrderPrice = requestDto.getMinOrderPrice();
-        Long deliveryFee = requestDto.getDeliveryFee();
+        int minOrderPrice = requestDto.getMinOrderPrice();
+        int deliveryFee = requestDto.getDeliveryFee();
 
         // 조건에 해당하지 않으면 에러가 나옴
         if (minOrderPrice < 1000 || minOrderPrice > 100000) {

@@ -6,9 +6,9 @@ import lombok.Getter;
 public class FoodDto {
     private  Long restaurantId;
     private String name;
-    private Long price;
+    private int price;
 
-    public FoodDto(Long restaurantId, String name, Long price) {
+    public FoodDto(Long restaurantId, String name, int price) {
         this.restaurantId = restaurantId;
         this.name =  name;
         this.price = price;

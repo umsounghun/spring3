@@ -1,10 +1,14 @@
 package com.sparta.spring31.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class RestaurantDto {
     private String name;
-    private Long minOrderPrice;
-    private Long deliveryFee;
+    private int minOrderPrice;
+    private int deliveryFee;
 }

@@ -2,6 +2,7 @@ package com.sparta.spring31.model;
 
 
 import com.sparta.spring31.dto.FoodDto;
+import com.sparta.spring31.dto.FoodRequestDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -22,16 +23,22 @@ public class Food {
     private String name;
 
     @Column(nullable = false)
-    private Long price;
+    private int price;
 
     @Column(nullable = false)
     private Long restaurantId;
 
 
 
-    public Food(Long restaurantId, String name, Long price) {
+    public Food(Long restaurantId, String name, int price) {
         this.restaurantId = restaurantId;
         this.name = name;
         this.price = price;
+    }
+    public Food(FoodRequestDto foodRequestDto, Long restaurantId) {
+
+        this.name = foodRequestDto.getName();
+        this.price = foodRequestDto.getPrice();
+        this.restaurantId = restaurantId;
     }
 }

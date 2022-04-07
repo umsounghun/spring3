@@ -24,7 +24,7 @@ public class FoodService {
 
         for (FoodDto requestDto : requestDtos) {
             String name = requestDto.getName();
-            Long price = requestDto.getPrice();
+            int price = requestDto.getPrice();
 
 
             // 조건에 해당하지 않으면 에러가 나옴

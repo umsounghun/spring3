@@ -22,19 +22,19 @@ public class Restaurant {
     private String name;
 
     @Column(nullable = false)
-    private Long minOrderPrice;
+    private int minOrderPrice;
 
     @Column(nullable = false)
-    private Long deliveryFee;
+    private int deliveryFee;
 
     // 게시글 생성
     public Restaurant(RestaurantDto requestDto) {
-        this.name = name;
-        this.minOrderPrice = minOrderPrice;
-        this.deliveryFee = deliveryFee;
+        this.name = requestDto.getName();
+        this.minOrderPrice = requestDto.getMinOrderPrice();
+        this.deliveryFee = requestDto.getDeliveryFee();
     }
 
-    public Restaurant(String name, Long minOrderPrice, Long deliveryFee) {
+    public Restaurant(String name, int minOrderPrice, int deliveryFee) {
         this.name = name;
         this.minOrderPrice = minOrderPrice;
         this.deliveryFee = deliveryFee;
